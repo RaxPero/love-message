@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Message</title>
+</head>
+
+<body>
+
+   <audio autoplay loop hidden id="bg-music">
+    <source src="love.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="message">
+    <div class="box">
+      <input type="checkbox" name="" id="message">
+      <div class="content">
+        <img src="3.png" alt="">
+        <div class="title">Dear my queen</div>
+        <div class="letter" id="letter">
+              
+        </div>
+        <label for="message">Close</label>
+      </div>
+     <label for="message" class="designBox"></label>
+  </div>
+  </div>
+
+  <script>
+  const messages = [
+    `You're stronger than you know.<br>I'm proud of you every second.<br>Keep healing, and never forget how much I love you...`,
+    `You are my strength and <br> my peace.<br>Each day you heal, my love for you grows.Stay strong, <br> my queen... 💖`,
+   `Even in pain, you're still <br> my sunshine.<br>Stay strong, my love <br> I'm with you always....`,
+    `I miss your smile every second.<br>Please stay strong and <br> love me like you do.<br>I'm waiting for you, my love...`,
+    `No storm can shake your soul.<br>Rest, heal, and let my love <br> hold you close.<br>I'm always with you....`,
+    `You make even recovery <br>look beautiful.<br>I believe in you, always.<br>Love you more each day..🥺💕`
+  ];
+
+      const letterDiv = document.getElementById("letter");
+
+    function showRandomMessage() {
+      letterDiv.classList.add("fade-out"); // Start fade out
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        letterDiv.innerHTML = messages[randomIndex];
+        letterDiv.classList.remove("fade-out"); // Fade back in
+      }, 600); // Match CSS transition time
+    }
+
+    // Show first message
+    showRandomMessage();
+
+    // Change message every 5 seconds with fade
+    setInterval(showRandomMessage, 5000);
+
+    // 🎵 Music Play on Click
+    const bgMusic = document.getElementById("bg-music");
+    bgMusic.volume = 0.3;
+
+    document.addEventListener("click", function startMusic() {
+      bgMusic.play().catch(err => console.log("Autoplay blocked:", err));
+      document.removeEventListener("click", startMusic);
+    });
+</script>
+
+</body>
+</html>
