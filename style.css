@@ -83,7 +83,7 @@ input{
 input:checked ~ .content{
   bottom: 120px;
   width: 250px;
-  height: 380px;
+  height: 400px;
   left: 50%;
   margin: 0;
   transform: translate(-50%);
